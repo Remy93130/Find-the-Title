@@ -1,0 +1,18 @@
+/**
+ * Example of the file config.json to connect to the database
+ * or use a mailer
+ */
+{
+	"database": {
+		"db_host": "localhost",
+		"db_name": "database_name",
+		"db_user": "root",
+		"db_pwd": null
+	},
+	"mailer": {
+		"mailer_host": "",
+		"mailer_type": "smtp",
+		"mailer_user": "",
+		"mailer_pwd": ""
+	}
+}
