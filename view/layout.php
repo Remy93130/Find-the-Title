@@ -37,6 +37,7 @@
 	</nav>
 
 	<div class="container-fluid" style="padding-top: 60px; padding-bottom: 60px">
+		<?php include 'public/asset/flashBag.php'; ?>
 		<?= $content ?>
 	</div>
 
