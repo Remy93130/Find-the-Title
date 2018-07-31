@@ -12,8 +12,8 @@ class UserController extends MainController {
 	}
 
 	public function login()	{
-		if (!isset($_POST)) {
-			header('Locate: index.php');
+		if (!isset($_POST['username'])) {
+			header('Location: index.php');
 		}
 		extract($_POST);
 		$title = 'Index';
@@ -21,7 +21,8 @@ class UserController extends MainController {
 		if ($data = $manager->loginUser($username, $password)) {
 			App::createUserSession(array(
 				'id'       => $data[0]->id,
-				'username' => $data[0]->username
+				'username' => $data[0]->username,
+				'slug'     => $data[0]->slug
 			));
 			$page = 'indexLogged';
 		} else {

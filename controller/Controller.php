@@ -2,7 +2,7 @@
 
 namespace controller;
 
-use model\UsersManager;
+use model\UserManager;
 use App\App;
 
 class Controller extends MainController {
@@ -19,5 +19,12 @@ class Controller extends MainController {
 		}
 		$title = 'Index';
 		$this->render($page, compact('title'));
+	}
+
+	public function register() {
+		$title = 'Inscription';
+		$manager = new UserManager();
+		$allUsernames = $manager->getAllUsername();
+		$this->render('register', compact('title', 'allUsernames'));
 	}
 }

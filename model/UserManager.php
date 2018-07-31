@@ -37,4 +37,14 @@ class UserManager {
 		}
 		return $data[0];
 	}
+
+	public function getAllUsername() {
+		$db = Database::getInstance();
+		$sql = 'SELECT username FROM users';
+		$req = $db->query($sql);
+		return $req->fetchAll(PDO::FETCH_COLUMN);
+	}
 }
+
+$UserManager = new UserManager();
+$UserManager->getAllUsername();

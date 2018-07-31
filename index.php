@@ -28,6 +28,8 @@ if ($route === 'index') {
 	$controller->profile();
 } elseif ($route === 'login') {
 	$userController->login();
+} elseif ($route === 'register') {
+	$controller->register();
 } else {
 	App::notFound();
 }
