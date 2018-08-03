@@ -64,6 +64,12 @@ class Database {
 		return $this->PDOInstance->query($query);
 	}
 
+	/**
+	 * Execute a prepare SQL request
+	 * @param  string $query      The request
+	 * @param  array $attributes  Different var to bind
+	 * @return PDOStatment
+	 */
 	public function prepare($query, $attributes) {
 		$req = $this->PDOInstance->prepare($query);
 		$req->execute($attributes);

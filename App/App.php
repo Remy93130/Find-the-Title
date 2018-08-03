@@ -57,4 +57,28 @@ class App {
 			$_SESSION[$name] = $value;
 		}
 	}
+
+	/**
+	 * Generate a token to avois CSRF breach
+	 * @return string The token
+	 */
+	public static function generateCsrfToken() {
+		$token = bin2hex(mcrypt_create_iv(32, MCRYPT_DEV_URANDOM));
+		$_SESSION['token'] = $token;
+		return $token;
+	}
+
+	/**
+	 * Check if token match
+	 * @return boolean
+	 */
+	public static function checkCsrfToken($token)	{
+		return (
+			isset($_SESSION['token']) && 
+			isset($_POST['token']) && 
+			!empty($_SESSION['token']) && 
+			!empty($_POST['token']) &&
+			$_SESSION['token'] == $token
+		);
+	}
 }

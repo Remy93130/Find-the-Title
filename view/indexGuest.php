@@ -7,13 +7,30 @@
 <div class="col-lg-6 offset-lg-3">
 	<form action="index.php?action=login" method="post">
 		<div class="form-group">
-			<label for="username">Nom de compte :</label>
-			<input type="text" name="username" class="form-control">
-		</div>
+			<!-- <label for="username">Nom de compte :</label> -->
+			<div class="input-group mb-2">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<i class="fas fa-user"></i>
+					</div>
+				</div>
+				<input type="text" name="username" class="form-control" placeholder="Nom de comte">
+			</div>
+		</div><br>
 		<div class="form-group">
-			<label for="pwd">Mot de passe :</label>
-			<input type="password" name="password" class="form-control">
-			<small>Si vous oubliez votre mot de passe, utiliser <a href="index.php?action=about">le formulaire de contact.</a></small>
+			<!-- <label for="pwd">Mot de passe :</label> -->
+			<div class="input-group mb-2">
+				<div class="input-group-prepend">
+					<div class="input-group-text">
+						<i class="fas fa-lock"></i>
+					</div>
+				</div>
+				<input type="password" name="password" class="form-control" placeholder="Mot de passe">
+				<input type="text" name="token" value="<?= $token; ?>" hidden="hidden">
+			</div>
+			<small class="form-text text-muted">
+				Si vous oubliez votre mot de passe, utiliser <a href="index.php?action=about">le formulaire de contact.</a>
+			</small>
 		</div>
 		<button type="submit" class="btn btn-primary">Connexion</button>
 	</form><br>

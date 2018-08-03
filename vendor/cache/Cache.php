@@ -34,7 +34,7 @@ class Cache {
 	/**
 	 * Insert content in a file
 	 * @param  string $fileName the name of the file
-	 * @param   $content  the data to store
+	 * @param  string $content  the data to store
 	 */
 	public function write($fileName, $content) {
 		return file_put_contents($this->path . '/' . $fileName, $content);

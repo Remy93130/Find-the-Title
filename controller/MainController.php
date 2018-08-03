@@ -23,7 +23,7 @@ class MainController {
 	 * @param  string $page name of the view
 	 * @param  array  $var  variable needed for the view
 	 */
-	public function render($page, $var=array()) {
+	protected function render($page, $var=array()) {
 		extract($var);
 		ob_start();
 		require ($this->pathView . $page . '.php');

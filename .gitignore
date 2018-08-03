@@ -1,2 +1,3 @@
 cache/*
+killSession.php
 App/config.json

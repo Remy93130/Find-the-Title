@@ -12,24 +12,50 @@ class UserController extends MainController {
 	}
 
 	public function login()	{
-		if (!isset($_POST['username'])) {
+		if (!isset($_POST['token']) && !App::checkCsrfToken($_POST['token'])) {
 			header('Location: index.php');
 		}
-		extract($_POST);
 		$title = 'Index';
 		$manager = new UserManager();
-		if ($data = $manager->loginUser($username, $password)) {
+		if ($data = $manager->loginUser($_POST['username'], $_POST['passoword'])) {
 			App::createUserSession(array(
 				'id'       => $data[0]->id,
 				'username' => $data[0]->username,
 				'slug'     => $data[0]->slug
 			));
-			$page = 'indexLogged';
+			$this->render('indexLogged', compact('title'));
 		} else {
 			$str = 'Nom de compte ou mot de passe incorrect !';
 			App::addMessage('danger', $str);
-			$page = 'indexGuest';
+			header('Location: index.php');
 		}
-			$this->render($page, compact('title'));
+	}
+
+	/**
+	 * Ajax request get all username
+	 */
+	public function getAllUsername() {
+		$manager = new UserManager();
+		if (!App::checkCsrfToken($_POST['token'])) {
+			App::forbiddenAccess();
+		}
+		echo json_encode($manager->getAllUsername());
+	}
+
+	public function registration() {
+		if (!isset($_POST['token']) && !App::checkCsrfToken($_POST['token'])) {
+			App::forbiddenAccess();
+		}
+		if ($_POST['username'] != "" && $_POST['password'] != "" && $_POST['cgu']) {
+			$manager = new UserManager();
+			$manager->addUser($_POST['username'], $_POST['password']);
+			$str = "Votre compte a bien été créée vous pouvez maintenant vous connecter.";
+			App::addMessage('success', $str);
+			header("Location: index.php");
+		} else {
+			$str = "Merci de remplir tout les champs !";
+			App::addMessage("danger", $str);
+			header('Location: index.php?action=register');
+		}
 	}
 }

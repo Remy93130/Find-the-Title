@@ -18,13 +18,15 @@ class Controller extends MainController {
 			$page = 'indexGuest';
 		}
 		$title = 'Index';
-		$this->render($page, compact('title'));
+		$token = App::generateCsrfToken();
+		$this->render($page, compact('title', 'token'));
 	}
 
 	public function register() {
 		$title = 'Inscription';
 		$manager = new UserManager();
-		$allUsernames = $manager->getAllUsername();
-		$this->render('register', compact('title', 'allUsernames'));
+		$scripts = array('registrationForm');
+		$token = App::generateCsrfToken();
+		$this->render('register', compact('title', 'token', 'scripts'));
 	}
 }

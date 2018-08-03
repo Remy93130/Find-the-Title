@@ -3,6 +3,8 @@
 <head>
 	<title><?= $title ?></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
+	<link rel="stylesheet" type="text/css" href="public/css/style.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta charset="utf-8">
 </head>
@@ -41,8 +43,16 @@
 		<?= $content ?>
 	</div>
 
-	<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+	<?php
+	if (isset($scripts)):
+		foreach ($scripts as $script):
+			echo "<script src=\"public/js/$script.js\"></script>\n\t";
+		endforeach;
+	endif; 
+	?>
+
 </body>
 </html>

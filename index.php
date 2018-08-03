@@ -20,6 +20,13 @@ if (isset($_GET['action'])) {
 	$route = 'index';
 }
 
+if (isset($_POST['query']) && isset($_POST['request'])) {
+	if ($_POST['request'] === 'getUser') {
+		$userController->getAllUsername();
+		die();
+	}
+}
+
 if ($route === 'index') {
 	$controller->index();
 } elseif ($route === 'about') {
@@ -30,6 +37,8 @@ if ($route === 'index') {
 	$userController->login();
 } elseif ($route === 'register') {
 	$controller->register();
+} elseif ($route == 'registration') {
+	$userController->registration();
 } else {
 	App::notFound();
 }
