@@ -3,25 +3,28 @@
 namespace model;
 
 use \PDO;
-use App\App;
 
 require_once 'Database.php'; // Delete after test
 
 require_once 'QuestionManager.php'; // Try to delete after test
+require_once 'LeaderboardManager.php'; // Try to delete after test
+
 
 class TournamentManager {
+    
+    public static function clearTournaments() {
+        $db = Database::getInstance();
+        $sql = 'UPDATE tournaments
+                SET date = CURRENT_DATE';
+        $db->query($sql);
+    }
 	
 	public function createTournaments()	{
-		$db = Database::getInstance();
-		$sql = 'DELETE FROM tournaments';
-		$db->query($sql);
-		$sql = 'DELETE FROM selectedquestions';
-		$db->query($sql);
-		$tournamentName = array("Général", "Thématique");
-		$sql = 'INSERT INTO tournaments(name, date)
-				VALUES (?, CURRENT_DATE)';
+		self::clearTournaments();
+		QuestionManager::clearQuestions();
+		LeaderboardManager::clearLeaderboards();
+		$tournamentName = array("General", "Thematique");
 		foreach ($tournamentName as $tournament) {
-			$db->prepare($sql, array($tournament));
 			$this->createQuestions($tournament);
 		}
 	}
@@ -48,7 +51,19 @@ class TournamentManager {
 			$db->prepare($sql, $param);
 		}
 	}
+	
+	public static function expireTournament() {
+	    $currentDate = date('Y-m-d');
+	    $db = Database::getInstance();
+	    $sql = 'SELECT date FROM tournaments';
+	    $req = $db->query($sql);
+	    $date = $req->fetch(PDO::FETCH_COLUMN);
+	    if ($date !== $currentDate) {
+	        $m = new TournamentManager();
+	        $m->createTournaments();
+	    } 
+	}
 }
 
 $m = new TournamentManager();
-$m->createTournaments();
+$m->expireTournament();

@@ -9,7 +9,7 @@ require_once 'Database.php';
 
 class LeaderboardManager {
     
-    public function clearLeaderboard() {
+    public static function clearLeaderboards() {
         $db = Database::getInstance();
         $sql = 'DELETE FROM leaderboards';
         $db->query($sql);
@@ -39,6 +39,3 @@ class LeaderboardManager {
         return $req->fetchAll(PDO::FETCH_CLASS, 'Leaderboard');
     }
 }
-
-$m = new LeaderboardManager();
-var_dump($m->getLeaderboard(13));

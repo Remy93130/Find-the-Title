@@ -7,9 +7,6 @@ use App\App;
 
 require 'entity/Question.php';
 
-require_once 'Database.php'; // Delete after test
-require 'CategoryManager.php'; // Try to delete after test
-
 class QuestionManager {
 	
 	public function getQuestions() {
@@ -50,19 +47,34 @@ class QuestionManager {
 
 	public function getQuestionsAJAX($tournament) {
 		$db = Database::getInstance();
-		$sql = 'SELECT Q.id, Q.category, Q.question, Q.image, Q.answer, T.name
-				FROM questions Q, tournaments T, selectedquestions SQ
-				WHERE T.id = SQ.idTournament
-					AND Q.id = SQ.idQuestions
-					AND T.name = ?';
+ 		$sql = 'SELECT Q.id, Q.category, Q.question, Q.image, Q.answer, T.name
+ 				FROM questions Q, tournaments T, selectedquestions SQ
+ 				WHERE T.id = SQ.idTournament
+ 					AND Q.id = SQ.idQuestions
+ 					AND T.name = ?';
+        // $sql = 'SELECT * FROM questions_view WHERE Tournament = ?';
 		$param = array($tournament);
 		$req = $db->prepare($sql, $param);
-		$data = $req->fetchAll(PDO::FETCH_CLASS);
+		$data = $req->fetchAll(PDO::FETCH_CLASS, "Question");
+		foreach ($data as $question) {
+		    if ($question->image) {
+		        $question->slug = $question->insertImage(dirname(__DIR__) . "/public/image_answer/");
+		        $question->image = null;
+		    }
+		}
 		echo json_encode($data);
 	}
+	
+	public static function clearQuestions() {
+	    $db = Database::getInstance();
+	    $sql = 'DELETE FROM selectedquestions';
+	    $db->query($sql);
+	}
+	
+	public function test() {
+	    $db = Database::getInstance();
+	    $sql = 'SELECT * FROM questions_view';
+	    $req = $db->query($sql);
+	    return $req->fetchAll(PDO::FETCH_CLASS);
+	}
 }
-
-$q = new QuestionManager();
-$c = new CategoryManager();
-
-var_dump($q->generateQuestions(2));

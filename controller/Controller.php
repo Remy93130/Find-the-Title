@@ -2,7 +2,6 @@
 
 namespace controller;
 
-use model\UserManager;
 use App\App;
 
 class Controller extends MainController {
@@ -11,7 +10,7 @@ class Controller extends MainController {
 		parent::__construct();
 	}
 
-	public function index()	{
+	public function index()	{    
 		if (App::userLogged()) {
 			$page = 'indexLogged';
 		} else {
@@ -24,7 +23,6 @@ class Controller extends MainController {
 
 	public function register() {
 		$title = 'Inscription';
-		$manager = new UserManager();
 		$scripts = array('registrationForm');
 		$token = App::generateCsrfToken();
 		$this->render('register', compact('title', 'token', 'scripts'));
