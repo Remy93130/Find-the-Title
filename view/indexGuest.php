@@ -1,7 +1,7 @@
 <div class="jumbotron jumbotron-fluid" style="margin-top: 1%">
 	<div class="container">
 		<h1 class="display-4">Pour commencer à jouer connectez-vous</h1>
-		<p class="lead">Pas encore de compte ? <a href="index.php?action=register">Cliquer ici pour en créer un.</a></p>
+		<p class="lead">Pas encore de compte ? <a href="index.php?action=register">Cliquer ici pour en créer un.</a></p>		
 	</div>
 </div>
 <div class="col-lg-6 offset-lg-3">

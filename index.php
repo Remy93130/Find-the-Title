@@ -5,6 +5,7 @@ use App\App;
 use controller\Controller;
 use controller\UserController;
 use controller\QuestionController;
+use controller\GameController;
 
 require_once 'App/Autoload.php';
 
@@ -19,6 +20,7 @@ Autoload::register();
 $controller = new Controller();
 $userController = new UserController();
 $questionController = new QuestionController();
+$gameController = new GameController();
 
 session_start();
 
@@ -47,8 +49,10 @@ if ($route === 'index') {
 	$userController->login();
 } elseif ($route === 'register') {
 	$controller->register();
-} elseif ($route == 'registration') {
+} elseif ($route === 'registration') {
 	$userController->registration();
+} elseif ($route === 'game') {
+	$gameController->game();
 } else {
 	App::notFound();
 }

@@ -4,6 +4,8 @@ namespace model;
 
 use \PDO;
 
+require_once 'entity/Leaderboard.php';
+
 require_once 'Database.php'; // Delete after test
 
 require_once 'QuestionManager.php'; // Try to delete after test
@@ -62,6 +64,18 @@ class TournamentManager {
 	        $m = new TournamentManager();
 	        $m->createTournaments();
 	    } 
+	}
+	
+	public function getLeaderboard($tournamentName) {
+	    $db = Database::getInstance();
+	    $sql = 'SELECT T.name, U.username, L.points
+                FROM leaderboards L, users U, tournaments T 
+                WHERE L.user = U.id
+	               AND L.tournament = T.id
+                   AND T.name = ?
+				ORDER BY points DESC';
+	    $req = $db->prepare($sql, array($tournamentName));
+	    return $req->fetchAll(PDO::FETCH_CLASS);
 	}
 }
 

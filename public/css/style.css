@@ -1,3 +1,32 @@
+html{
+	min-height:100%;
+	position:relative;}
+
 #error-username {
 	color: red;
+}
+
+#app {
+	height: 89vh;
+}
+
+#form-app .form-control {
+	width: 98%;
+}
+
+#input-app {
+	margin-right: 100px;
+	text-align: center;
+	height: 50px;
+	border-radius: 50px;
+	font-size: 40px;
+	bottom: 10px;
+	position: absolute;
+}
+
+#img-app {
+}
+
+#stat-app {
+	padding-top: 20vh;
 }

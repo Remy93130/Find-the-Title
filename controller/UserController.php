@@ -17,7 +17,7 @@ class UserController extends MainController {
 		}
 		$title = 'Index';
 		$manager = new UserManager();
-		if ($data = $manager->loginUser($_POST['username'], $_POST['passoword'])) {
+		if ($data = $manager->loginUser($_POST['username'], $_POST['password'])) {
 			App::createUserSession(array(
 				'id'       => $data[0]->id,
 				'username' => $data[0]->username,
