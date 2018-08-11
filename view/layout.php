@@ -20,19 +20,19 @@
 
 		<div class="collapse navbar-collapse" id="navbarSupportedContent">
 			<ul class="navbar-nav mr-auto">
-				<li class="nav-item active">
-					<a class="nav-link" href="index.php">Accueil</a>
+				<li class="nav-item">
+					<a class="nav-link hvr-underline-from-center" href="index.php">Accueil</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="index.php?action=addQuestion">Ajouter des questions</a>
+					<a class="nav-link hvr-underline-from-center" href="index.php?action=addQuestion">Ajouter des questions</a>
 				</li>
 				<li class="nav-item">
-					<a class="nav-link" href="index.php?action=howToPlay">Comment jouer</a>
+					<a class="nav-link hvr-underline-from-center" href="index.php?action=howToPlay">Comment jouer</a>
 				</li>
 			</ul>
 			<ul class="navbar-nav mr-right">
 				<li class="nav-item">
-					<a class="nav-link" href="index.php?action=about">A propos</a>
+					<a class="nav-link hvr-underline-from-center" href="index.php?action=about">A propos</a>
 				</li>
 			</ul>
 		</div>
@@ -55,4 +55,9 @@
 	?>
 
 </body>
+<script type="text/javascript">
+	$(document).ready(function(){
+	    $('[data-toggle="tooltip"]').tooltip();   
+	});
+</script>
 </html>

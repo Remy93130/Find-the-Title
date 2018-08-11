@@ -2,8 +2,7 @@
 
 class User {
 
-	public function getLink() {
-		return "index.php?action=profile&id=$this->id";
+	public function getDelete() {
+		return "index_admin.php?action=delete&target=user&id=$this->id&token=";
 	}
-	
 }

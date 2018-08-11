@@ -1,4 +1,5 @@
 var usernames;
+var regexMail = /^([\w-\.]+@([\w-]+\.)+[\w-]{2,4})?$/;
 
 function getUsernames() {
 	$.post(
@@ -8,8 +9,8 @@ function getUsernames() {
 			request:"getUser",
 			token:$("#token").val()
 		},
-		function(data) {
-			usernames = $.parseJSON(data);
+		(_data) => {
+			usernames = $.parseJSON(_data);
 			for (var i = 0; i < usernames.length; i++) {
 				usernames[i] = usernames[i].toLowerCase();
 			}
@@ -17,10 +18,10 @@ function getUsernames() {
 	);
 }
 
-$(document).ready(function(){
+$(document).ready(() => {
 
 	getUsernames();
-	$("#username").keyup(function() {
+	$("#username").keyup(() => {
 		var data = $.inArray($("#username").val().toLowerCase(), usernames);
 		if (data != -1) {
 			$("#error-username").empty();
@@ -29,6 +30,17 @@ $(document).ready(function(){
 		} else {
 			$("#error-username").empty();
 			$('button').prop('disabled', false);
+		}
+	});
+
+	$('#email').keyup(() => {
+		if ($('#email').val().match(regexMail)) {
+			$("#error-email").empty();
+			$('button').prop('disabled', false);
+		} else {
+			$("#error-email").empty();
+			$("#error-email").append("Cette adresse Email n'est pas correct !");
+			$('button').prop('disabled', true);
 		}
 	});
 });

@@ -6,12 +6,6 @@ use \PDO;
 
 require_once 'entity/Leaderboard.php';
 
-require_once 'Database.php'; // Delete after test
-
-require_once 'QuestionManager.php'; // Try to delete after test
-require_once 'LeaderboardManager.php'; // Try to delete after test
-
-
 class TournamentManager {
     
     public static function clearTournaments() {
@@ -27,7 +21,13 @@ class TournamentManager {
 		LeaderboardManager::clearLeaderboards();
 		$tournamentName = array("General", "Thematique");
 		foreach ($tournamentName as $tournament) {
-			$this->createQuestions($tournament);
+			if ($tournament == 'Thematique') {
+				$manager = new CategoryManager();
+				$cat = $manager->getRandomCategory();
+				$this->createQuestions($tournament, $cat->name);
+			} else {
+				$this->createQuestions($tournament);
+			}
 		}
 	}
 
@@ -77,7 +77,12 @@ class TournamentManager {
 	    $req = $db->prepare($sql, array($tournamentName));
 	    return $req->fetchAll(PDO::FETCH_CLASS);
 	}
+	
+	public function setScore($user, $tournament, $score) {
+		$db = Database::getInstance();
+		$sql = 'INSERT INTO leaderboards (user, points, tournament)
+				VALUES (?, ?, ?)';
+		$param = array($user, $score, $tournament);
+		$db->prepare($sql, $param);
+	}
 }
-
-$m = new TournamentManager();
-$m->expireTournament();

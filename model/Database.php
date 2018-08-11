@@ -3,6 +3,7 @@
 namespace model;
 
 use \PDO;
+use PDOStatement;
 
 class Database {
 
@@ -14,7 +15,7 @@ class Database {
 
 	/**
 	 * The Database class
-	 * @var Dabatase
+	 * @var Object
 	 * @static
 	 */
 	private static $instance = null;
@@ -33,7 +34,7 @@ class Database {
 
 	/**
 	 * Read the data in the file config.json
-	 * @return stdObject
+	 * @return Object
 	 */
 	private function getData() {
 		$file = fopen(dirname(__DIR__) . '/App/config.json', 'r');
@@ -58,7 +59,7 @@ class Database {
 	/**
 	 * Execute an SQL request
 	 * @param  String $query The request
-	 * @return PDOStatment
+	 * @return PDOStatement 
 	 */
 	public function query($query) {
 		return $this->PDOInstance->query($query);
@@ -68,7 +69,7 @@ class Database {
 	 * Execute a prepare SQL request
 	 * @param  string $query      The request
 	 * @param  array $attributes  Different var to bind
-	 * @return PDOStatment
+	 * @return PDOStatement
 	 */
 	public function prepare($query, $attributes) {
 		$req = $this->PDOInstance->prepare($query);

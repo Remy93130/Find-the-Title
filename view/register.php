@@ -12,6 +12,11 @@
 			<p id="error-username"></p>
 		</div>
 		<div class="form-group">
+			<label for="email">Adresse Email :</label>
+			<input type="text" name="email" id="email" class="form-control">
+			<p id="error-email"></p>
+		</div>
+		<div class="form-group">
 			<label for="pwd">Mot de passe :</label>
 			<input type="password" name="password" class="form-control">
 			<input type="text" name="token" id="token" value="<?= $token; ?>" hidden="hidden">
@@ -27,7 +32,7 @@
 	<div class="container">
 		<h1 class="display-4">Condition Général d'Utilisation (CGU)</h1>
 		<p class="lead">
-			<a href="file/cgu.pdf" target="_blank">Vous pouvez également téléchargement le document</a>
+			<a href="public/file/cgu.pdf" target="_blank">Vous pouvez également téléchargement le document</a>
 		</p>
 	</div>
 </div>
@@ -95,6 +100,12 @@
 		sans préavis, le tout sans droit à indemnités. L’utilisateur reconnaît et accepte que l'éditeur ne soit 
 		pas responsable des interruptions, et des conséquences qui peuvent en découler pour l’utilisateur ou 
 		tout tiers. 
+	</p><br>
+	<h3>Vos données personnelles</h3>
+	<p class="text-justify" style="text-indent: 3rem">
+		Toutes les informations personnelles que vous entrez sur le site Find the Title ne seront dans aucun cas 
+		communiqué et/ou vendu à un tier et resteront confidentielles à l’exception de votre nom d’utilisateur 
+		visible par tous les utilisateurs du site.
 	</p><br>
 	<h3>Modification des conditions d’utilisation</h3><br>
 	<p class="text-justify" style="text-indent: 3rem">

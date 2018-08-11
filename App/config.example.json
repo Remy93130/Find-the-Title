@@ -1,7 +1,3 @@
-/**
- * Example of the file config.json to connect to the database
- * or use a mailer
- */
 {
 	"database": {
 		"db_host": "localhost",

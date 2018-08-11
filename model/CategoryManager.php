@@ -2,12 +2,9 @@
 
 namespace model;
 
-use \PDO;
-use App\App;
+use PDO;
 
 require 'entity/Category.php';
-
-require_once 'Database.php'; // Delete after test
 
 class CategoryManager {
 	
@@ -23,8 +20,3 @@ class CategoryManager {
 		return $data[array_rand($data)];
 	}
 }
-
-/*$m = new CategoryManager();
-var_dump($m->getCategories());
-var_dump($m->getRandomCategory());
-*/

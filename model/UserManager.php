@@ -2,8 +2,7 @@
 
 namespace model;
 
-use \PDO;
-use App\App;
+use PDO;
 
 require 'entity/User.php';
 
@@ -40,19 +39,49 @@ class UserManager {
 	 * @param string $username 
 	 * @param string $password 
 	 */
-	public function addUser($username, $password) {
+	public function addUser($username, $email, $password) {
 		$db = Database::getInstance();
-		$sql = 'INSERT INTO users(username, password, slug)
-				VALUES (?, ?, ?)';
+		$sql = 'INSERT INTO users(username, email, password, slug)
+				VALUES (?, ?, ?, ?)';
 		$param = array(
-			htmlspecialchars($username), 
+			htmlspecialchars($username),
+			htmlspecialchars($email),
 			sha1($password), 
 			$this->generateSlug($username)
 		);
-		$req = $db->prepare($sql, $param);
+		$db->prepare($sql, $param);
 	}
 
 	private function generateSlug($username) {
 		return sha1($username);
+	}
+	
+	public function updateEmail($email, $id) {
+		$db = Database::getInstance();
+		$sql = 'UPDATE users SET email = ? WHERE id = ?';
+		$param = array($email, $id);
+		$db->prepare($sql, $param);
+	}
+	
+	public function updatePassword($password, $id) {
+		$db = Database::getInstance();
+		$sql = 'Update users SET password = ? WHERE id = ?';
+		$param = array(sha1($password), $id);
+		$db->prepare($sql, $param);
+	}
+
+	public function deleteAccount($id) {
+		$db = Database::getInstance();
+		$sql = 'DELETE FROM users WHERE id = ?';
+		$param = array($id);
+		$db->prepare($sql, $param);
+	}
+
+	public function sendMessage($name, $email, $message) {
+		$db = Database::getInstance();
+		$sql = 'INSERT INTO messages(name, email, message)
+				VALUES (?, ?, ?)';
+		$param = array($name, $email, $message);
+		$db->prepare($sql, $param);
 	}
 }

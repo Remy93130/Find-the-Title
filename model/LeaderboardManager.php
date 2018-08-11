@@ -5,8 +5,6 @@ use \PDO;
 
 require_once 'entity/Leaderboard.php';
 
-require_once 'Database.php';
-
 class LeaderboardManager {
     
     public static function clearLeaderboards() {

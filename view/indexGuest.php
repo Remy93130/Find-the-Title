@@ -29,7 +29,7 @@
 				<input type="text" name="token" value="<?= $token; ?>" hidden="hidden">
 			</div>
 			<small class="form-text text-muted">
-				Si vous oubliez votre mot de passe, utiliser <a href="index.php?action=about">le formulaire de contact.</a>
+				<a href="#" data-toggle="tooltip" data-placement="bottom" title="Utilisez le formulaire de contact">Mot de passe oublié ?</a>
 			</small>
 		</div>
 		<button type="submit" class="btn btn-primary">Connexion</button>
@@ -46,14 +46,18 @@
 		Une question sur un thème précis avec éventuellement une image.<br>
 		Votre objectif ? Répondre le plus rapidement à celle-ci.<br>
 		Chaque jour deux nouveaux tournois à accomplir :<br>
-		<ul>
-			<li>
-				<p class="lead">Un tournoi génerique avec {{ X }} questions sur différents thèmes.</p>
-			</li>
-			<li>
-				<p class="lead">Un tournoi avec {{ X }} questions sur un thème spécifique.</p>
-			</li>
-		</ul><br>
-		Alors qu'attendez-vous ? <a href="index.php?action=register">Créer un compte.</a>
+	</p>
+	<ul>
+		<li>
+			<p class="lead">Un tournoi génerique avec 10 questions sur différents thèmes.</p>
+		</li>
+		<li>
+			<p class="lead">Un tournoi avec 10 questions sur un thème spécifique.</p>
+		</li>
+	</ul><br>
+	<p class="lead text-justify">
+		Vous avez également la possibilité de jouer sans que votre score soit enregistré.<br>
+		Vous pouvez même soumettre vos propres questions !<br>
+		Alors qu'attendez-vous ? <a href="index.php?action=register">Créer un compte.</a><br><br>
 	</p>
 </div>

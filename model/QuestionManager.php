@@ -3,7 +3,6 @@
 namespace model;
 
 use \PDO;
-use App\App;
 
 require 'entity/Question.php';
 
@@ -45,21 +44,25 @@ class QuestionManager {
 	}
 
 
-	public function getQuestionsAJAX($tournament) {
+	public function getQuestionsAJAX($tournament, $all) {
 		$db = Database::getInstance();
- 		$sql = 'SELECT Q.id, Q.category, Q.question, Q.image, Q.answer, T.name
- 				FROM questions Q, tournaments T, selectedquestions SQ
- 				WHERE T.id = SQ.idTournament
- 					AND Q.id = SQ.idQuestions
- 					AND T.name = ?';
-        // $sql = 'SELECT * FROM questions_view WHERE Tournament = ?';
-		$param = array($tournament);
-		$req = $db->prepare($sql, $param);
+		if ($all == 1) {
+			$sql = 'SELECT * FROM questions';
+			$req = $db->query($sql);
+		} else {
+			$sql = 'SELECT Q.id, Q.category, Q.question, Q.image, Q.answer, T.name
+					FROM questions Q, tournaments T, selectedquestions SQ
+					WHERE T.id = SQ.idTournament
+						AND Q.id = SQ.idQuestions
+						AND T.id = ?';
+			$param = array($tournament);
+			$req = $db->prepare($sql, $param);
+		}
 		$data = $req->fetchAll(PDO::FETCH_CLASS, "Question");
 		foreach ($data as $question) {
-		    if ($question->image) {
-		        $question->slug = $question->insertImage(dirname(__DIR__) . "/public/image_answer/");
-		        $question->image = null;
+			if ($question->image) {
+				$question->slug = $question->insertImage(dirname(__DIR__) . "/public/image_answer/");
+				$question->image = null;
 		    }
 		}
 		echo json_encode($data);
@@ -71,10 +74,17 @@ class QuestionManager {
 	    $db->query($sql);
 	}
 	
-	public function test() {
-	    $db = Database::getInstance();
-	    $sql = 'SELECT * FROM questions_view';
-	    $req = $db->query($sql);
-	    return $req->fetchAll(PDO::FETCH_CLASS);
+	public function insertQuestion($category, $question, $answer, $image=false) {
+		$db = Database::getInstance();
+        if ($image) {
+            $sql = 'INSERT INTO questions (category, question, image, answer)
+                    VALUES (?, ?, ?, ?)';
+            $param = array($category, $question, file_get_contents($image), $answer);
+        } else {
+        	$sql = 'INSERT INTO questions (category, question, answer)
+        	        VALUES (?, ?, ?)';
+        	$param = array($category, htmlspecialchars($question), htmlspecialchars($answer));
+        }
+        $db->prepare($sql, $param);
 	}
 }

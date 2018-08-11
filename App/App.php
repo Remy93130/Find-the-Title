@@ -3,7 +3,9 @@
 namespace App;
 
 /**
- * Class who contain general method for the application
+ * Class who contain static methods for the application
+ * @author Barberet Rémy
+ * @version 1.0.0
  */
 class App {
 
@@ -25,6 +27,7 @@ class App {
 
 	/**
 	 * Add a message in the flashbag with session
+	 * Expected work with the file flashbag.php
 	 * @param string $type    type of message
 	 * @param string $message message
 	 */
@@ -40,7 +43,7 @@ class App {
 	}
 
 	/**
-	 * Check if an user is connected with var 'id' in session
+	 * Check if an user is connected with var 'id' in $_SESSION array
 	 * @return boolean 
 	 */
 	public static function userLogged() {
@@ -59,7 +62,8 @@ class App {
 	}
 
 	/**
-	 * Generate a token to avois CSRF breach
+	 * Generate a token to avois CSRF breach and insert
+	 * the token in $_SESSION['array']
 	 * @return string The token
 	 */
 	public static function generateCsrfToken() {
@@ -69,7 +73,8 @@ class App {
 	}
 
 	/**
-	 * Check if token match
+	 * Check if the token given in parameter match with
+	 * the token $_SESSION['token']
 	 * @return boolean
 	 */
 	public static function checkCsrfToken($token)	{
