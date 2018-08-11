@@ -19,4 +19,3 @@ class TournamentController extends MainController {
 		$manager->setScore($_SESSION['id'], $_POST['tournament'], $_POST['score']);
 	}
 }
-
