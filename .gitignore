@@ -2,3 +2,9 @@ cache/*
 killSession.php
 App/config.json
 public/image_answer/*
+vendor/*
+
+# IDE Settings
+
+.project
+.settings

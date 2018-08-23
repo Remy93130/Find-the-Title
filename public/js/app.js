@@ -1,4 +1,4 @@
-const IMG_PATH = "public/image_answer/";
+const IMG_PATH = "image_answer/";
 var questions = [];
 var win = false;
 var pointer = 0;
@@ -7,28 +7,28 @@ var res = undefined;
 var chrono = {
 	secondsLeft: 0,
 	timer: undefined,
-	start: function(secondsLeft) {
+	start: function (secondsLeft) {
 		this.secondsLeft = secondsLeft;
 		this.timer = setInterval(this.tick.bind(this), 1000);
 	},
-	tick: function() {
+	tick: function () {
 		document.getElementById("coutdown").innerHTML = --this.secondsLeft;
-		if(this.secondsLeft === 0)
+		if (this.secondsLeft === 0)
 			this.stop()
-		},
+	},
 
-	stop: function() {
+	stop: function () {
 		clearInterval(this.timer);
 		endQuestion(win);
 	}
 };
 
 function shuffle(a) {
-    for (let i = a.length - 1; i > 0; i--) {
-        const j = Math.floor(Math.random() * (i + 1));
-        [a[i], a[j]] = [a[j], a[i]];
-    }
-    return a;
+	for (let i = a.length - 1; i > 0; i--) {
+		const j = Math.floor(Math.random() * (i + 1));
+		[a[i], a[j]] = [a[j], a[i]];
+	}
+	return a;
 }
 
 function endQuestion(_result) {
@@ -83,13 +83,12 @@ function getQuestions() {
 		all = 1;
 	}
 	$.post(
-		"index.php",
-		{
-			query:1,
-			request:"getQuestions",
-			tournament:$('#tournament').val(),
-			all:all,
-			token:$("#token").val()
+		"index.php", {
+			query: 1,
+			request: "getQuestions",
+			tournament: $('#tournament').val(),
+			all: all,
+			token: $("#token").val()
 		},
 		(_data) => {
 			elements = $.parseJSON(_data);
@@ -98,22 +97,22 @@ function getQuestions() {
 			}
 			shuffle(questions);
 		}
-	);	
+	);
 }
 
 function setScore() {
+	if ($("#tournament").val() == 'null') {
+		return 0;
+	}
 	$.post(
-		"index.php",
-		{
-			query:1,
-			request:"setScore",
+		"index.php", {
+			query: 1,
+			request: "setScore",
 			tournament: $('#tournament').val(),
-			token:$('#token').val(),
-			score:$('#points').text()
+			token: $('#token').val(),
+			score: $('#points').text()
 		},
 		(_data) => {
-			console.log('score send');
-			console.log(_data);
 		}
 	)
 }
@@ -161,7 +160,9 @@ function displayQuestion(_index) {
 	return questions[_index].answer;
 }
 
-$('body').css({'background-color': '#e9ecef'});
+$('body').css({
+	'background-color': '#e9ecef'
+});
 
 $(document).ready(() => {
 
@@ -172,7 +173,7 @@ $(document).ready(() => {
 		$('#info-app').append('Lancement...');
 	});
 
-	$('#form-app').submit( (e) => {
+	$('#form-app').submit((e) => {
 		e.preventDefault();
 		str = formatAnswer($('#input-app').val());
 		checkMatch(str);

@@ -5,7 +5,7 @@
 	</div>
 </div>
 <div class="col-lg-6 offset-lg-3">
-	<form action="index.php?action=login" method="post">
+	<form action="index.php?action=login" method="post" autocomplete="off">
 		<div class="form-group">
 			<!-- <label for="username">Nom de compte :</label> -->
 			<div class="input-group mb-2">

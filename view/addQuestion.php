@@ -3,7 +3,7 @@
 		<h1 class="display-4">Ajouter une question</h1>
 		<p class="lead">
 			Participer au développement du jeu en envoyant vos propres questions !<br>
-			Pour ajouter une catégorie, <a href="#">faite une demande dans le formulaire de contact.</a>
+			Pour ajouter une catégorie, <a href="index.php?action=about">faite une demande dans le formulaire de contact.</a>
 		</p>		
 	</div>
 </div>

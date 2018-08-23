@@ -1,0 +1,15 @@
+{
+  "short_name": "FTT",
+  "name": "Find the Title",
+  "icons": [
+    {
+      "src": "../images/logo.png",
+      "type": "image/png",
+      "sizes": "512x311"
+    }
+  ],
+  "start_url": "/ftt/public/index.php",
+  "background_color": "#FFFFFF",
+  "display": "browser",
+  "theme_color": "#E9ECEF"
+}

@@ -24,7 +24,7 @@
 			<li>PHP et MySQL</li>
 		</ul>
 		<p>
-			Vous pouvez retrouver le code source du site <a href="">sur GitHub.</a>
+			Vous pouvez retrouver le code source du site <a href="https://github.com/Remy93130/Find-the-Title" target="_blank">sur GitHub.</a>
 		</p><br>
 		<h3>L'auteur :</h3><br>
 		<p class="text-justify">
@@ -61,6 +61,8 @@
 <div class="row" style="margin-bottom: 5%">
 	<div class="col-lg-6 offset-lg-3">
 		<ul class="list-group text-center">
+			<li class="list-group-item">18/08/2018 - Amélioration de la sécurité du site</li>
+			<li class="list-group-item">13/08/2018 - Refactorisation du code</li>
 			<li class="list-group-item">12/08/2018 - Mise en ligne de la beta</li>
 		</ul>
 	</div>

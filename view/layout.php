@@ -1,18 +1,20 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title><?= $title ?></title>
+	<title>Find the Title - <?= $title ?></title>
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css">
-	<link rel="stylesheet" type="text/css" href="public/css/style.css">
+	<link rel="stylesheet" type="text/css" href="css/style.css">
+	<link rel="icon" type="image/png" href="images/favicon.png">
+	<link rel="manifest" href="asset/manifest.json">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 	<meta charset="utf-8">
 </head>
 <body>
 	<nav class="navbar fixed-top navbar-expand-lg navbar-light bg-light">
 		<a class="navbar-brand" href="index.php">
-			<img src="https://image.flaticon.com/icons/svg/149/149229.svg" width="30" height="30" class="d-inline-block align-top" alt="">
-			Find the title
+			<img src="images/logo.png" width="90" height="55" class="d-inline-block align-top" alt="">
+			<!-- Find the title -->
 		</a>
 		<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
 			<span class="navbar-toggler-icon"></span>
@@ -38,8 +40,8 @@
 		</div>
 	</nav>
 
-	<div class="container-fluid" style="padding-top: 60px; ">
-		<?php include 'public/asset/flashBag.php'; ?>
+	<div class="container-fluid" style="padding-top: 70px; ">
+		<?php include 'asset/flashBag.php'; ?>
 		<?= $content ?>
 	</div>
 
@@ -49,7 +51,7 @@
 	<?php
 	if (isset($scripts)):
 		foreach ($scripts as $script):
-			echo "<script src=\"public/js/$script.js\"></script>\n\t";
+			echo "<script src=\"js/$script.js\"></script>\n\t";
 		endforeach;
 	endif; 
 	?>

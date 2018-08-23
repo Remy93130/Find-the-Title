@@ -1,0 +1,23 @@
+{
+	"name" : "remy/ftt",
+	"authors" : [{
+			"name" : "Rémy Barberet",
+			"email" : "32952895+Remy93130@users.noreply.github.com"
+		}
+	],
+	"autoload" : {
+		"psr-4" : {
+			"ftt\\" : "src/ftt",
+			"App\\" : "App/"
+		}
+	},
+	"require-dev" : {
+		"squizlabs/php_codesniffer" : "*",
+		"symfony/debug" : "^4.1",
+		"symfony/debug-pack": "^1.0",
+		"symfony/profiler-pack": "^1.0"
+	},
+	"require" : {
+		"symfony/finder" : "^4.1"
+	}
+}
