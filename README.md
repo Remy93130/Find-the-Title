@@ -12,7 +12,9 @@ These instructions will get you a copy of the project up and running on your loc
 ### Prerequisites
 
 PHP 7 is mandatory !
-To install the project you need have composer to install external libraries used
+
+To install the project you need have composer to install external libraries used.
+
 When composer is ready, install libraries
 ```
 composer install
@@ -23,7 +25,9 @@ composer install
 When all libraries was import to the project, you must import the database.
 The database dump and some data are in the folder _migration_
 the database contains few questions to start the website **after users should add more by themself**
+
 For configure the database create a file _config.json_ on the App folder, use the example file to make it.
+
 When users added more questions, you can up the number of question per tournament in the file _TournamentManager.php_ with the constant QUESTION_NUMBER at line 55.
 
 to access to the admin panel, you must go on _index_admin.php_ in the same folder than admin.php
@@ -52,7 +56,7 @@ And don't forget to disable debug option in the _index.php_ file
 
 ## License
 
-This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md) file for details
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details
 
 ## Acknowledgments
 
