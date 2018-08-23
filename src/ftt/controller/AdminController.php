@@ -18,7 +18,7 @@ class AdminController extends AbstractController
      */
     public function index()
     {
-        if (empty($_SESSION['id']) && $_SESSION['id'] != 1) {
+        if (!isset($_SESSION['id']) || $_SESSION['id'] != 1) {
             App::forbiddenAccess();
         }
         $manager = new AdminManager();

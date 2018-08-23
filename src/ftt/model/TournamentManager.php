@@ -52,9 +52,10 @@ class TournamentManager
      */
     private function createQuestions($tournament, $cat = false)
     {
+        define("QUESTION_NUMBER", 5).
         $db = Database::getInstance();
         $qManager = new QuestionManager();
-        $data = $qManager->generateQuestions(5, $cat);
+        $data = $qManager->generateQuestions(QUESTION_NUMBER, $cat);
         $sql = 'INSERT INTO selectedquestions(idTournament, idQuestions)
 				VALUES (
 					(SELECT id
