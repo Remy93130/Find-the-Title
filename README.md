@@ -3,7 +3,7 @@
 ![alt text](https://raw.githubusercontent.com/Remy93130/Find-the-Title/master/public/images/favicon.png "Find the Title logo")
 
 
-Find the Title is web application, he offers to his users a game whose goal is to quickly answer the question display on the game screen.
+Find the Title is a web application, he offers to his users a game whose goal is to quickly answer the question display on the game screen.
 
 ## Getting Started
 
@@ -22,22 +22,22 @@ composer install
 
 ### Installing
 
-When all libraries was import to the project, you must import the database.
+When all libraries were imported to the project, you must import the database.
 The database dump and some data are in the folder _migration_
-the database contains few questions to start the website **after users should add more by themself**
+the database contains a few questions to start the website **after users should add more by themselves**
 
-For configure the database create a file _config.json_ on the App folder, use the example file to make it.
+For configure the database creates a file _config.json_ on the App folder, use the example file to make it.
 
-When users added more questions, you can up the number of question per tournament in the file _TournamentManager.php_ with the constant QUESTION_NUMBER at line 55.
+When users added more questions, you can up the number of questions per tournament in the file _TournamentManager.php_ with the constant QUESTION_NUMBER at line 55.
 
 to access to the admin panel, you must go on _index_admin.php_ in the same folder than admin.php
-To see administration tools, you must be loggin with your account 
+To see administration tools, you must be login with your account 
 :warning: **Your account must have the id #1 !**
 
 
 ## Deployment
 
-To deploy the website on a live system please use the following composer command
+To deploy the website on a live system, please use the following composer command
 ```
 composer install --no-dev --optimize-autoloader
 ```

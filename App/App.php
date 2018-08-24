@@ -5,7 +5,7 @@ namespace App;
  * Class who contain static methods for the application
  *
  * @author Barberet Rémy
- * @version 1.0.0
+ * @version 1.0.2
  */
 class App
 {
@@ -16,7 +16,8 @@ class App
     public static function notFound()
     {
         header('HTTP/1.0 404 Not Found');
-        die('Page not found.');
+        require_once '../view/404.php';
+        die();
     }
 
     /**

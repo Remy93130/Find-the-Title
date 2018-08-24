@@ -52,7 +52,7 @@ class TournamentManager
      */
     private function createQuestions($tournament, $cat = false)
     {
-        define("QUESTION_NUMBER", 5).
+        define("QUESTION_NUMBER", 5);
         $db = Database::getInstance();
         $qManager = new QuestionManager();
         $data = $qManager->generateQuestions(QUESTION_NUMBER, $cat);
